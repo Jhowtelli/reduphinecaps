@@ -20,6 +20,7 @@
       min-height: 100vh;
       width: 100vw;
       overflow-x: hidden;
+      position: relative;
     }
 
     .container {
@@ -27,9 +28,9 @@
       min-height: 100vh;
       margin: 0;
       padding: 40px 5vw;
-      background: #fff;           /* Fundo branco */
-      border-radius: 12px;        /* Cantos arredondados */
-      box-shadow: 0 0 20px rgba(0,0,0,0.06); /* Sombra suave */
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.06);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -38,7 +39,7 @@
 
     .hero-img {
       width: 100%;
-      max-width: 420px;           /* Imagem maior */
+      max-width: 420px;
       height: auto;
       display: block;
       margin: 0 auto 30px;
@@ -152,7 +153,7 @@
     }
 
     .footer {
-      background: #7e22ce; /* Fundo roxo */
+      background: #7e22ce;
       border-top: 1px solid #e3e9e1;
       padding: 32px 0 18px 0;
       text-align: center;
@@ -176,52 +177,34 @@
       display: inline-block;
     }
     .footer-copy {
-      color: #fff; /* Texto branco para contraste */
+      color: #fff;
       font-size: 0.98em;
       margin-top: 10px;
     }
 
-    @media (max-width: 1024px) {
-      .container {
-        padding: 30px 2vw;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 20px 0;
-      }
-      h1 {
-        font-size: 1.3em;
-      }
-      .offer {
-        font-size: 1em;
-        padding: 16px;
-      }
-      .btn-buy {
-        font-size: 1em;
-        padding: 12px;
-      }
-      .faq {
-        padding: 0 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.1em;
-      }
-      .hero-img {
-        max-width: 90vw;
-      }
+    /* Aviso de redirecionamento no canto inferior direito */
+    #redirect-warning {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: rgba(30,58,42,0.9);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 0.9em;
+      max-width: 280px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 9999;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="container">
 
-    <!-- iFrame que simula clique no link de afiliado -->
-    <iframe src="https://app.monetizze.com.br/r/AGK25375737?utm_source=facebook&utm_medium=ads&utm_campaign=reduphine_caps" width="1" height="1" style="border:0; position:absolute; left:-9999px;"></iframe>
+    <!-- iframe invisível para tracking/afiliado -->
+    <iframe src="https://app.monetizze.com.br/r/AGK25375737?utm_source=facebook&utm_medium=ads&utm_campaign=reduphine_caps" width="1" height="1" style="border:0; position:absolute; left:-9999px;" aria-hidden="true" tabindex="-1"></iframe>
 
     <img
       src="https://reduphinecaps.com.br/wp-content/webp-express/webp-images/uploads/2024/01/Para-quem-2.png.webp"
@@ -278,5 +261,16 @@
     </div>
     <p class="footer-copy">© 2025 ReduPhine Caps. Todos os direitos reservados.</p>
   </footer>
+
+  <div id="redirect-warning">
+    Você será redirecionado para a oferta desconto exclusivo em 20 segundos...
+  </div>
+
+  <script>
+    // Redireciona após 20 segundos
+    setTimeout(() => {
+      window.location.href = "https://app.monetizze.com.br/r/AGK25375737?utm_source=facebook&utm_medium=ads&utm_campaign=reduphine_caps";
+    }, 20000);
+  </script>
 </body>
 </html>
